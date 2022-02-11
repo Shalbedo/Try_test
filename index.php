@@ -1,17 +1,17 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"]=="POST") {
-    if (empty($_POST["name"])){
+if ($_SERVER["REQUEST_METHOD"]==="POST") {
+    if (!isset($_POST["name"])){
         Throw new Exception("Name is required");
     } else {
         $name=checktext($_POST["name"]);
     }
-    if (empty($_POST["email"])){
+    if (!isset($_POST["email"])){
         Throw new Exception("email is required");
     } else {
         $email=checktext($_POST["email"]);
     }
-    if (empty($_POST["comment"])){
+    if (!isset($_POST["comment"])){
         $comment="";
     } else {
     $comment=checktext($_POST["comment"]);
