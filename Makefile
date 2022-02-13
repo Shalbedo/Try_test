@@ -3,7 +3,6 @@
 install:
 	docker-compose build
 	make up
-	sh docker/mysql-ready.sh
 up:
 	docker-compose up -d
 down:
