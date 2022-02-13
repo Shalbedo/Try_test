@@ -4,9 +4,9 @@ class User
     public const VERSION='версия wishmaster: 2.65 qarasique edition';
 
     private string $userName;
-    private int $threadsCreated=0;
-    private int $postSent=0;
-    private string $status='newfag';
+    private int $threadsCreated = 0;
+    private int $postSent = 0;
+    private string $status = 'newfag';
 
     public function __construct()
     {

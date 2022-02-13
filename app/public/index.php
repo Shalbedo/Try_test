@@ -1,29 +1,32 @@
 <?php
-include 'Form.php';
-$dsn= "mysql:dbname=main;host=database";
-$name=$_POST['name'];
-$email=$_POST['email'];
-$gender=$_POST['gender'];
-$comment=$_POST['comment'];
-$username= "root";
-$password= "password";
+include '/var/www/app/src/Handler/Form.php';
+
+$dsn = 'mysql:host=database;dbname=main;port=3306';
+$name = $_POST['name'] ?? null;
+$email = $_POST['email'] ?? null;
+$gender = $_POST['gender'] ?? null;
+$comment = $_POST['comment'] ?? null;
+$username = "root";
+$password = "password";
+
 try {
-    $db= new PDO($dsn, $username, $password); // Переменная с текущим подключением к базе данных
-    echo "suca\n";
+    $db = new PDO($dsn, $username, $password); // Переменная с текущим подключением к базе данных
 } catch (PDOException $e) {
+    echo "EXCEPTION: ";
     echo $e->getMessage();
 }
-function createTable ($db) {
-    $statement=$db->prepare("CREATE TABLE IF NOT EXISTS user (
-        Name varchar(255),
-        Email varchar(255),
-        Gender varchar(255),
-        Comment varchar(255),
-        )");
+function createTable (PDO $db) {
+    $statement = $db->prepare('CREATE TABLE IF NOT EXISTS `user` (
+        id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(255),
+        email VARCHAR(255),
+        gender VARCHAR(255),
+        comment VARCHAR(255)
+        );');
     $statement->execute();
 }
 function addRecord ($db, $name, $email, $gender, $comment) {
-    $statement=$db->prepare("insert into user(Name,Email,Gender,Comment) values (?,?,?,?)");
+    $statement=$db->prepare("INSERT INTO user(name, email, gender, comment) values (?,?,?,?)");
     $statement->execute([$name, $email, $gender, $comment]);
 }
 function showTable ($db){
@@ -60,5 +63,5 @@ function checktext($data)
     return $data;
 }
 
-addRecord ($db, $name, $email, $gender, $comment);
-showTable ($db);
+addRecord($db, $name, $email, $gender, $comment);
+showTable($db);
