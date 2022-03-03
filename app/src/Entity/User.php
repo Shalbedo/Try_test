@@ -1,20 +1,40 @@
 <?php
+
+namespace App\Entity;
+
 class User
 {
-    public const VERSION='версия wishmaster: 2.65 qarasique edition';
+    public const VERSION = 'версия wishmaster: 2.65 qarasique edition';
+    public const USER_GENDERS = [
+        'MAN',
+        'WOMAN'
+    ];
 
-    private string $userName;
+    private string $username;
+    private string $email;
     private int $threadsCreated = 0;
     private int $postSent = 0;
+    private string $gender = 'MAN';
     private string $status = 'newfag';
 
-    public function __construct()
+    public function getUsername(): string
     {
+        return $this->username;
     }
 
-    public function getUserName()
+    public function setUsername(string $username)
     {
-        return $this->userName;
+        $this->username=$username;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getStatus()
@@ -22,24 +42,23 @@ class User
         return $this->status ?? 'Нюфаня';
     }
 
-    public function getThreadsCreated()
+    public function setStatus(string $status)
     {
-        return($this->threadsCreated);
+        $this->status=$status;
     }
 
     public function getPostSent()
     {
         return $this->postSent;
     }
-
-    public function setUserName(string $userName)
+    public function setPostSent(int $postSent)
     {
-        $this->userName=$userName;
+        $this->postSent=$postSent;
     }
 
-    public function setStatus(string $status)
+    public function getThreadsCreated()
     {
-        $this->status=$status;
+        return($this->threadsCreated);
     }
 
     public function setThreadsCreated(int $threadsCreated)
@@ -47,8 +66,19 @@ class User
         $this->threadsCreated=$threadsCreated;
     }
 
-    public function setPostSent(int $postSent)
+    /**
+     * @return string
+     */
+    public function getGender(): string
     {
-        $this->postSent=$postSent;
+        return $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     */
+    public function setGender(string $gender): void
+    {
+        $this->gender = $gender;
     }
 }

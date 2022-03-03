@@ -1,4 +1,4 @@
-<form action="index.php" method="post">
+<form action="<?php $_SERVER['DOCUMENT_ROOT'] . $_SERVER['DOCUMENT_URI']; ?>" method="post">
 Name: <input type="text" name="name"><br><br>
 E-mail: <input type="text" name="email"><br><br>
 Gender: <input type="radio" name="gender" value="male">Male

@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Entity;
+
 class Comment
 {
     private string $body;
