@@ -24,11 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'name' => $_POST['name'] ?? null,
         'email' => $_POST['email'] ?? null,
         'comment' => $_POST['comment'] ?? null,
+        'gender' => $_POST['gender'] ?? null
     ];
 
     $validator = new PostDataValidator();
-    $validator->validate($data);
     $validator->sanitizeText($data);
+    $validator->validate($data);
+
 
 
     $user = new User();

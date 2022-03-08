@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use Exception;
 
 class Article
 {

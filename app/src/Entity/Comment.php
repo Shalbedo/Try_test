@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Entity;
+use DateTimeImmutable;
+use Exception;
 
 class Comment
 {
     private string $body;
     private User $author;
     private Article $article;
-    private \DateTimeImmutable $createdAt;
+    private DateTimeImmutable $createdAt;
 
     public function __construct()
     {
